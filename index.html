@@ -121,6 +121,124 @@ details[hidden]{display:none}
 .nav{position:fixed;z-index:7;left:50%;transform:translateX(-50%);bottom:calc(clamp(10px,2vw,26px) + 10px + env(safe-area-inset-bottom,0px));display:flex;gap:2px;background:rgba(28,32,36,.94);border:1px solid var(--rule);padding:4px;max-width:calc(100% - 64px);overflow-x:auto}
 .nav a{font:500 13px/1 var(--b);color:var(--mid);text-decoration:none;padding:9px 12px;white-space:nowrap}
 .nav a:hover{color:#fff;background:var(--hull2)}
+
+ ```css
+/* Records section */
+.records-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.record-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--border, #303744);
+  border-radius: 14px;
+  background: var(--card-bg, rgba(255, 255, 255, 0.03));
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.record-item:hover {
+  border-color: var(--accent, #7c9cff);
+  transform: translateY(-2px);
+}
+
+.record-icon {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.record-icon img {
+  display: block;
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
+}
+
+.publication-icon {
+  color: #a9baff;
+  background: rgba(124, 156, 255, 0.12);
+}
+
+.publication-icon svg {
+  width: 34px;
+  height: 34px;
+}
+
+.nasa-icon img {
+  width: 90%;
+  height: 90%;
+}
+
+.iisc-icon {
+  background: #f3f0e8;
+  color: #8b2525;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.matlab-icon img {
+  width: 90%;
+  height: 90%;
+}
+
+.record-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.record-content h3 {
+  margin: 0 0 5px;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.record-content p {
+  margin: 0 0 7px;
+  font-size: 0.86rem;
+  opacity: 0.72;
+  line-height: 1.5;
+}
+
+.record-content a {
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--accent, #7c9cff);
+}
+
+.record-content a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 520px) {
+  .record-item {
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .record-icon {
+    width: 46px;
+    height: 46px;
+    flex-basis: 46px;
+  }
+
+  .record-content h3 {
+    font-size: 0.92rem;
+  }
+}
+```
 /* v3: curves, depth, motion */
 .panel{border-radius:20px;scroll-margin-top:30px;background:radial-gradient(520px circle at var(--mx,50%) var(--my,-60%),rgba(255,255,255,.06),transparent 62%),repeating-linear-gradient(90deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px),linear-gradient(180deg,var(--hull2),var(--hull))}
 .plate{border-radius:10px 10px 0 0}
@@ -287,14 +405,109 @@ summary .st{border-radius:999px;padding:5px 12px}
 
 <div class="gap s"></div>
 
+```html
 <section class="panel" id="records" aria-labelledby="h-rec">
-<span class="plate">Publication and training</span>
-<h2 id="h-rec">Records</h2>
-<p><strong>Evaluation Metrics for Retrieval-Augmented Generation (RAG) Systems: A Framework Proposal.</strong> Presented at ICDTE, RVITM. <a href="https://doi.org/10.5281/zenodo.21607583">doi.org/10.5281/zenodo.21607583</a></p>
-<p>NASA ARSET: Fundamentals of Remote Sensing<a href="https://drive.google.com/file/d/1QHoz0Fdqxn65wWk93oO-jUMVyFr5qe3c/view?usp=sharing">View</a></p> <p> Hyperspectral Data for Land and Coastal Systems.<a href="https://drive.google.com/file/d/1hzANGJTWcUh2CXHPYQzswQphs7OU0DFi/view?usp=sharing">View</a></p> <p>IISc workshop on quantum computing familiarisation (FQCI).<a href="https://drive.google.com/drive/u/3/folders/1M3abvRBFppU9u6xt0aejJ3ogwXWDLWfV">View</a></p>
-<p>MathLabWorks Image Processing <a href="https://drive.google.com/file/d/1G-E9CRZiVOkGHl4mgrZjjWbJ3d6CIBP5/view?usp=sharing"View></a></p>
-</section>
+  <span class="plate">Publication and training</span>
+  <h2 id="h-rec">Records</h2>
 
+  <div class="records-list">
+
+    <!-- Publication -->
+    <article class="record-item">
+      <div class="record-icon publication-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none">
+          <rect x="9" y="5" width="30" height="38" rx="4"
+                stroke="currentColor" stroke-width="2"/>
+          <path d="M16 16H32M16 23H32M16 30H27"
+                stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"/>
+          <path d="M29 35L33 39L40 31"
+                stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="record-content">
+        <h3>Evaluation Metrics for RAG Systems</h3>
+        <p>Research publication · ICDTE, RVITM</p>
+        <a href="https://doi.org/10.5281/zenodo.21607583"
+           target="_blank" rel="noopener noreferrer">
+          Read publication ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- NASA Remote Sensing -->
+    <article class="record-item">
+      <div class="record-icon nasa-icon">
+        <img
+          src="https://www.nasa.gov/wp-content/themes/nasa/assets/images/nasa-logo.svg"
+          alt="NASA logo"
+          loading="lazy">
+      </div>
+      <div class="record-content">
+        <h3>Fundamentals of Remote Sensing</h3>
+        <p>NASA ARSET · Training certificate</p>
+        <a href="https://drive.google.com/file/d/1QHoz0Fdqxn65wWk93oO-jUMVyFr5qe3c/view?usp=sharing"
+           target="_blank" rel="noopener noreferrer">
+          View certificate ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- NASA Hyperspectral -->
+    <article class="record-item">
+      <div class="record-icon nasa-icon">
+        <img
+          src="https://www.nasa.gov/wp-content/themes/nasa/assets/images/nasa-logo.svg"
+          alt="NASA logo"
+          loading="lazy">
+      </div>
+      <div class="record-content">
+        <h3>Hyperspectral Data for Land and Coastal Systems</h3>
+        <p>NASA ARSET · Training certificate</p>
+        <a href="https://drive.google.com/file/d/1hzANGJTWcUh2CXHPYQzswQphs7OU0DFi/view?usp=sharing"
+           target="_blank" rel="noopener noreferrer">
+          View certificate ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- IISc Workshop -->
+    <article class="record-item">
+      <div class="record-icon iisc-icon" aria-hidden="true">
+        <span>IISc</span>
+      </div>
+      <div class="record-content">
+        <h3>Quantum Computing Familiarisation Workshop</h3>
+        <p>IISc · FQCI workshop</p>
+        <a href="https://drive.google.com/drive/u/3/folders/1M3abvRBFppU9u6xt0aejJ3ogwXWDLWfV"
+           target="_blank" rel="noopener noreferrer">
+          View record ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- MathLabWorks -->
+    <article class="record-item">
+      <div class="record-icon matlab-icon">
+        <img
+          src="https://www.mathworks.com/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/images/pic-header-mathworks-logo.svg"
+          alt="MathWorks logo"
+          loading="lazy">
+      </div>
+      <div class="record-content">
+        <h3>Image Processing</h3>
+        <p>MathLabWorks · Training certificate</p>
+        <a href="https://drive.google.com/file/d/1G-E9CRZiVOkGHl4mgrZjjWbJ3d6CIBP5/view?usp=sharing"
+           target="_blank" rel="noopener noreferrer">
+          View certificate ↗
+        </a>
+      </div>
+    </article>
+
+  </div>
+</section>
+```
 <div class="gap s"></div>
 
 <section class="panel" id="contact" aria-labelledby="h-c">
@@ -311,8 +524,15 @@ summary .st{border-radius:999px;padding:5px 12px}
 <span class="plate">Resume</span>
 <h2 id="h-r">The full record, in one file</h2>
 <p class="lead">Experience, education, projects and publication on a single page, ready to share.</p>
-<a class="dl" href="https://drive.google.com/drive/u/3/folders/1-p3UopnilbHXb9AXnt9cAk-YNK4HLLmA" download>Download resume (PDF)</a>
-<p class="fine">Opens a PDF named resume.pdf.</p>
+
+<a class="dl"
+   href="https://drive.google.com/uc?export=download&id=https://drive.google.com/file/d/18_flkPl4oYI8eQI_itwEDpuBSz9Hh3do/view?usp=sharing"
+   target="_blank"
+   rel="noopener">
+  Download resume (PDF)
+</a>
+<p class="fine">Downloads the resume PDF.</p>
+
 </section>
 <p class="foot">The Earth view is drawn live in your browser and is not real imagery. City lights drift with your scroll to mimic orbital motion.</p>
 </main>
